@@ -23,12 +23,21 @@ jobs:
           mkdir -p rocketmq-docker/image-build-ci
           cd rocketmq-docker/image-build-ci
           echo "echo FOOO" > ./build-image-local.sh
-          chmod +x ./build-image-local.sh
+          chmod +x build-image-local.sh
+          cd ../..
+      - run: |
+          ls
+          ls rocketmq-docker/image-build-ci
+          cat rocketmq-docker/image-build-ci/build-image-local.sh
       - uses: actions/checkout@v3
         with:
           repository: apache/rocketmq-docker.git
           ref: master
           path: rocketmq-docker
+      - run: |
+          ls
+          ls rocketmq-docker/image-build-ci
+          cat rocketmq-docker/image-build-ci/build-image-local.sh
       - run: |
           cd rocketmq-docker/image-build-ci
           sh ./build-image-local.sh
