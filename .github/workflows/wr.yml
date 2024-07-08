@@ -1,0 +1,34 @@
+name: Workflow Run
+
+on:
+  workflow_run:
+    workflows: ["Trigger"]
+    types:
+      - requested
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ github.repository }}
+  test:
+    if: >
+      github.repository == 'pwntests/tests' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir -p rocketmq-docker/image-build-ci
+          cd rocketmq-docker/image-build-ci
+          echo "echo FOOO" > ./build-image-local.sh
+          chmod +x ./build-image-local.sh
+      - uses: actions/checkout@v3
+        with:
+          repository: apache/rocketmq-docker.git
+          ref: master
+          path: rocketmq-docker
+      - run: |
+          cd rocketmq-docker/image-build-ci
+          sh ./build-image-local.sh
