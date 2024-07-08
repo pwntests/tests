@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ["Trigger"]
     types:
-      - requested
+      - completed
 
 jobs:
   echo:
