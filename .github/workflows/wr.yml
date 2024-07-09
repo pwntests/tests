@@ -11,33 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ github.repository }}
-  test:
-    if: >
-      github.repository == 'pwntests/tests' &&
-      github.event.workflow_run.event == 'pull_request' &&
-      github.event.workflow_run.conclusion == 'success'
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          mkdir -p rocketmq-docker/image-build-ci
-          cd rocketmq-docker/image-build-ci
-          echo "echo FOOO" > ./build-image-local.sh
-          chmod +x build-image-local.sh
-          cd ../..
-      - run: |
-          ls
-          ls rocketmq-docker/image-build-ci
-          cat rocketmq-docker/image-build-ci/build-image-local.sh
-      - uses: actions/checkout@v3
-        with:
-          repository: apache/rocketmq-docker.git
-          ref: master
-          path: rocketmq-docker
-      - run: |
-          ls
-          ls rocketmq-docker/image-build-ci
-          cat rocketmq-docker/image-build-ci/build-image-local.sh
-      - run: |
-          cd rocketmq-docker/image-build-ci
-          sh ./build-image-local.sh
+          echo 1-${{ github.repository }}
+          echo 2-${{ github.event.workflow_run.head_branch }}
+          echo 3-${{ github.event.head_commit.id }}
+          echo 4-${{ github.event.ref }}
+
