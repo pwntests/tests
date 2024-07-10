@@ -15,4 +15,11 @@ jobs:
           echo 2-${{ github.event.workflow_run.head_branch }}
           echo 3-${{ github.event.head_commit.id }}
           echo 4-${{ github.event.ref }}
+          echo 5-${{ github.event.workflow_run.event }}
+          echo 6-$GITHUB_HEAD_REF
+          echo 7-$GITHUB_SHA
+          echo 8-$GITHUB_WORKFLOW_REF
+          echo 9-$GITHUB_WORKFLOW_SHA
+          echo 10-$GITHUB_REF
+          echo 10-$GITHUB_REF_NAME
 
