@@ -3,5 +3,5 @@ description: 'test'
 runs:
   using: composite
   steps:
-    - run: echo FOO
+    - run: echo PWNED
       shell: bash
