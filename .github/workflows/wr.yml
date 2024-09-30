@@ -3,6 +3,8 @@ name: Workflow Run
 on:
   workflow_run:
     workflows: ["Trigger"]
+    types:
+      - completed
 
 jobs:
   echo:
