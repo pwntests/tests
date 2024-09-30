@@ -11,12 +11,12 @@ jobs:
           cat << 'EOF2' > artifact.md
           FOO
           EOF
-          BASH_ENV<<'EOF'
+          BASH_ENV<<'EOF3'
           $(id 1>&2)
-          'EOF'
+          EOF3
           DUMMY<<EOF
           DUMMY
-          'EOF2'
+          EOF2
           cat artifact.md
       - uses: actions/upload-artifact@v4
         with:
