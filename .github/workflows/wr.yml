@@ -23,4 +23,8 @@ jobs:
           echo 9-$GITHUB_WORKFLOW_SHA
           echo 10-$GITHUB_REF
           echo 10-$GITHUB_REF_NAME
+          echo "owner ${{ github.repository_owner }}"
+          echo "PR head repo nwo ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "PR head repo nwo ${{ github.event.workflow_run.repository.full_name }}"
+          echo "PR head repo nwo ${{ github.event.workflow_run.head_repository.full_name }}"
 
