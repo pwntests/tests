@@ -1,14 +1,25 @@
 name: Trigger
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "src/**"
+  pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Trigger
+      - run: |
+          cat << 'EOF2' > artifact.md
+          FOO
+          EOF
+          BASH_ENV<<EOF3
+          $(id 1>&2)
+          EOF3
+          DUMMY<<EOF
+          DUMMY
+          EOF2
+          cat artifact.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact.md
+          path: artifact.md
+
