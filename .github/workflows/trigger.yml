@@ -1,7 +1,11 @@
 name: Trigger
 
 on:
-  pull_request:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
 
 jobs:
   test:
