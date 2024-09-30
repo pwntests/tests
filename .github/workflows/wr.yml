@@ -3,8 +3,8 @@ name: Workflow Run
 on:
   workflow_run:
     workflows: ["Trigger"]
-    #branches:
-    #  - '**'
+    branches:
+      - 'feat/**'
     types:
       - completed
 
