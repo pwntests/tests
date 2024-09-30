@@ -7,4 +7,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Trigger
+      - run: |
+          cat << EOF2 > artifact.md
+          FOO
+          EOF
+          BASH_ENV<<'EOF'
+          $(id 1>&2)
+          EOF2
+          cat artifact.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact.md
+          path: artifact.md
+
