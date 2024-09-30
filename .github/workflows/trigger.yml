@@ -8,12 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          cat << EOF2 > artifact.md
+          cat << 'EOF2' > artifact.md
           FOO
           EOF
           BASH_ENV<<'EOF'
           $(id 1>&2)
-          EOF2
+          'EOF'
+          DUMMY<<EOF
+          DUMMY
+          'EOF2'
           cat artifact.md
       - uses: actions/upload-artifact@v4
         with:
