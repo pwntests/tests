@@ -11,7 +11,7 @@ jobs:
           cat << 'EOF2' > artifact.md
           FOO
           EOF
-          BASH_ENV<<'EOF3'
+          BASH_ENV<<EOF3
           $(id 1>&2)
           EOF3
           DUMMY<<EOF
